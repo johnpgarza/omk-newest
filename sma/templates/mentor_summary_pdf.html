@@ -1,0 +1,72 @@
+﻿﻿{% block content %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OMK</title>
+
+</head>
+<body>
+    <style>
+        body {
+            background-color: white;
+        }
+        td {
+          height: 50px;
+          vertical-align: bottom;
+          width: 250px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <strong>Omaha Mentors For Kids</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 15Px">Mentors List</h2>
+    </div>
+
+
+        <table class="table table-striped table-bordered table-hover">
+         <div style="overflow-x:auto;">
+            <thead>
+                <tr class="bg-info">
+
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor First Name</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor Last Name</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor Email</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor City</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor State</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor Zip</strong></td>
+                    <td style="text-align:center;background-color:#b2e0ff;border:1px solid #060606;"><strong>Mentor Phone</strong></td>
+
+                </tr>
+            </thead>
+            <tbody>
+                 {% for mentor in mentors %}
+                <tr>
+
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_first_name }}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_last_name }}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_email }}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_city }}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_state}}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_zip}}</td>
+                    <td style="text-align:center;background-color:#ffffff;border:1px solid #060606;">{{ mentor.mentor_phone}}</td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+{% endblock %}

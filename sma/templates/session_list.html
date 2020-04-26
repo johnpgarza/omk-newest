@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_content %}
+ <style>
+        body {
+            background-color: beige;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">Here are your available sessions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 20Px">List of Sessions</h2>
+    </div>
+    <div>
+        <table   class="table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th >Session Name</th>
+                <th >Session Location</th>
+                <th >Session Start Date</th>
+                <th >Session End Date</th>
+                <th >Mentor Assigned</th>
+                <th >Group to be taught</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for session in session_list %}
+                <tr>
+                    <td align="left"><a href="{% url 'session_details' pk=session.pk %}">{{ session.session_name }}</a></td>
+
+                    <td >{{ session.session_location }}</td>
+                    <td>{{ session.session_start_date }}</td>
+                    <td >{{ session.session_end_date }}</td>
+                    <td>{{ session.mentor }}</td>
+                    <td>{{ session.group }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock body_content %}

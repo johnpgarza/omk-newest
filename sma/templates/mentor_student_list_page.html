@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_content %}
+ <style>
+        body {
+            background-color: beige;
+        }
+    </style>
+
+
+
+    <div class="row">
+    {% ifequal user_type 'mentors' %}
+            <a href="{% url 'add_student_or_mentor' user_type='mentors' %}"  class="row"><span class="btn btn-primary">Add Mentor</span></a>
+    {% endifequal %}
+    {% ifequal user_type 'students' %}
+            <a href="{% url 'add_student_or_mentor' user_type='students' %}"  class="row"><span class="btn btn-primary">Add student</span></a>
+    {% endifequal %}
+
+
+
+
+        <h2 style="padding-left: 20Px">List of {{user_type}}</h2>
+    </div>
+
+
+
+    <div>
+
+
+
+        <table   class="table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th >{{user_type}} Name</th>
+                <th >{{user_type}} Email</th>
+                <th >{{user_type}} City</th>
+                <th >{{user_type}} State</th>
+                <th >{{user_type}} Phone</th>
+                <th >{{user_type}} created_date</th>
+                <th> Edit {{user_type}}</th>
+                <th> Delete {{user_type}}</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for info in list_info %}
+                <tr>
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.student_first_name }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.mentor_first_name }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.student_email }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.mentor_email }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.student_city }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.mentor_city }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.student_state }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.mentor_state }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.student_phone }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.mentor_phone }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td >{{ info.created_date }}</td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td >{{ info.created_date }}</td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td ><a class="btn btn-success btn-large" href="{% url 'edit_student_or_mentor' user_type='students' user_id=info.id  %}">Edit</a></td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td ><a class="btn btn-success btn-large" href="{% url 'edit_student_or_mentor' user_type='mentors' user_id=info.id %}">Edit</a></td>
+                    {% endifequal %}
+
+                    {% ifequal user_type 'students'  %}
+                        <td ><a class="btn btn-danger btn-large" href="{% url 'delete_student_or_mentor' user_type='students' user_id=info.id %}">Delete</a></td>
+                    {% endifequal %}
+                    {% ifequal user_type 'mentors' %}
+                        <td ><a class="btn btn-danger btn-large" href="{% url 'delete_student_or_mentor' user_type='mentors' user_id=info.id %}">Delete</a></td>
+                    {% endifequal %}
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% ifequal user_type 'mentors' %}
+        <a href="{% url 'mentor_summary_pdf' %}"  class="row"><span class="btn btn-primary">Download Report</span></a>
+    {% endifequal %}
+    {% ifequal user_type 'students' %}
+        <a href="{% url 'student_summary_pdf' %}"  class="row"><span class="btn btn-primary">Download Report</span></a>
+    {% endifequal %}
+
+    </div>
+{% endblock body_content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+# JGarza 3/29/2020
+# Created Email Contact Form.
+{% block body_content %}
+        {% for student in class %}
+            {{ student.student_email }}
+        {% endfor %}
+    <h1>Email Class</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+      <button class="btn btn-success ml-2" type="submit">Save</button>
+    </form>
+{% endblock body_content %}

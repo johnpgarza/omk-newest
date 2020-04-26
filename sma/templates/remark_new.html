@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block  body_content %}
+    <h1>Add Remark</h1>
+    <span>Student ID:</span>
+
+    <span>{{ student.id }}</span>
+
+    <p>
+    <span>Session ID:</span>
+
+    <span>{{ session.id }}</span>
+    </p>
+    <p></p>
+
+    <form method="POST" class="service-form">{% csrf_token %}
+          {{form}}
+
+        <p></p>
+        <button type="submit" class="save btn btn-default" href="{% url 'reviewform' session.pk student.pk %}">Save</button>
+    </form>
+{% endblock body_content %}
+
+
